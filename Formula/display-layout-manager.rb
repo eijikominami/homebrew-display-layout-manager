@@ -3,8 +3,8 @@ class DisplayLayoutManager < Formula
 
   desc "macOS用ディスプレイレイアウト自動設定ツール"
   homepage "https://github.com/eijikominami/display-layout-manager"
-  url "https://github.com/eijikominami/display-layout-manager/archive/v1.1.0.tar.gz"
-  sha256 "81d58d3b6db4a632e6b1b7f8b6ee933da90e3e60206e0e9e49074f0f2a6ce804"
+  url "https://github.com/eijikominami/display-layout-manager/archive/v1.1.1.tar.gz"
+  sha256 "e68533dfcb3984246ac41b9a6b522895521d56c10c248ed5e40f5c082959690c"
   license "MIT"
 
   depends_on "python@3.11"
@@ -23,6 +23,34 @@ class DisplayLayoutManager < Formula
     log_dir = "#{Dir.home}/Library/Logs/DisplayLayoutManager"
     system "mkdir", "-p", log_dir
     system "chmod", "700", log_dir
+
+    # 常駐機能の自動セットアップ
+    system "#{bin}/display-layout-manager", "--enable-daemon"
+    
+    # セットアップ完了メッセージ
+    puts <<~EOS
+      Display Layout Manager がインストールされました。
+      
+      常駐監視機能が自動的に有効化されています。
+      ディスプレイ設定の変更時に自動的にレイアウトが適用されます。
+      
+      管理コマンド:
+        display-layout-manager --status-daemon    # 状態確認
+        display-layout-manager --disable-daemon   # 無効化
+        display-layout-manager --enable-daemon    # 有効化
+      
+      設定ファイル:
+        ~/Library/Application Support/DisplayLayoutManager/config.json
+        ~/Library/Application Support/DisplayLayoutManager/daemon.json
+      
+      ログファイル:
+        ~/Library/Logs/DisplayLayoutManager/
+    EOS
+  end
+
+  def uninstall_preflight
+    # 常駐機能を停止・削除
+    system "#{bin}/display-layout-manager", "--disable-daemon"
   end
 
   test do
