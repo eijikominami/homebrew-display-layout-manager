@@ -3,8 +3,8 @@ class DisplayLayoutManager < Formula
 
   desc "macOS用ディスプレイレイアウト自動設定ツール"
   homepage "https://github.com/eijikominami/display-layout-manager"
-  url "https://github.com/eijikominami/display-layout-manager/archive/v1.3.2.tar.gz"
-  sha256 "d18df6339c3f064fb46002ebbd5071dcd49a1a69ad866b858e737850c3f07787"
+  url "https://github.com/eijikominami/display-layout-manager/archive/v1.3.3.tar.gz"
+  sha256 "4313f876291e5260ea9b9234eebe7b1af5c88dc66625d7fb9d6643a66a214559"
   license "MIT"
 
   depends_on "python@3.11"
@@ -28,6 +28,15 @@ class DisplayLayoutManager < Formula
 
   def install
     virtualenv_install_with_resources
+    
+    # Manually create menubar entry point if it doesn't exist
+    unless (bin/"display-layout-menubar").exist?
+      (bin/"display-layout-menubar").write <<~EOS
+        #!/bin/bash
+        exec "#{libexec}/bin/python" -m display_layout_manager.menubar "$@"
+      EOS
+      chmod 0755, bin/"display-layout-menubar"
+    end
   end
 
   def post_install
@@ -49,8 +58,8 @@ class DisplayLayoutManager < Formula
         display-layout-manager --show-displays   # 接続されたディスプレイを表示
       
       メニューバーアプリ:
-        display-layout-manager-menubar            # メニューバーアプリを起動
-        display-layout-manager-menubar --enable-auto-launch  # 自動起動を有効化
+        display-layout-menubar            # メニューバーアプリを起動
+        display-layout-menubar --enable-auto-launch  # 自動起動を有効化
       
       設定ファイル:
         ~/Library/Application Support/DisplayLayoutManager/config.json
