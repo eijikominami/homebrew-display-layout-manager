@@ -3,8 +3,8 @@ class DisplayLayoutManager < Formula
 
   desc "macOS用ディスプレイレイアウト自動設定ツール"
   homepage "https://github.com/eijikominami/display-layout-manager"
-  url "https://github.com/eijikominami/display-layout-manager/archive/v1.1.4.tar.gz"
-  sha256 "bf43479528aec90334ec03a38fd9881256f592a0b1626646051cd6d7dd1ec358"
+  url "https://github.com/eijikominami/display-layout-manager/archive/v1.2.0.tar.gz"
+  sha256 "a7fce33d27fc57cafe72d4e05fb3d03f98a47c459018a4a9a6ec5494125da108"
   license "MIT"
 
   depends_on "python@3.11"
