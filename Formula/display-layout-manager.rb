@@ -3,8 +3,8 @@ class DisplayLayoutManager < Formula
 
   desc "macOS用ディスプレイレイアウト自動設定ツール"
   homepage "https://github.com/eijikominami/display-layout-manager"
-  url "https://github.com/eijikominami/display-layout-manager/archive/v1.3.0.tar.gz"
-  sha256 "4c5fe5661a3cda33ade7fc96bc4bb230c3be45bd2c6db105503c3610b574df40"
+  url "https://github.com/eijikominami/display-layout-manager/archive/v1.3.1.tar.gz"
+  sha256 "4a39a681a107160aa5ce40f5db93e472dc629f03c604c7ad9facbb794d50b850"
   license "MIT"
 
   depends_on "python@3.11"
@@ -12,13 +12,13 @@ class DisplayLayoutManager < Formula
   depends_on "grep"
 
   resource "rumps" do
-    url "https://files.pythonhosted.org/packages/3d/11/5696c4f1f5d0e8b9a3e7f8e0e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3/rumps-0.4.0.tar.gz"
-    sha256 "95b5e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3e3"
+    url "https://files.pythonhosted.org/packages/b2/e2/2e6a47951290bd1a2831dcc50aec4b25d104c0cf00e8b7868cbd29cf3bfe/rumps-0.4.0.tar.gz"
+    sha256 "17fb33c21b54b1e25db0d71d1d793dc19dc3c0b7d8c79dc6d833d0cffc8b1596"
   end
 
   resource "pyobjc-framework-Cocoa" do
-    url "https://files.pythonhosted.org/packages/pyobjc-framework-Cocoa/pyobjc_framework_Cocoa-9.2.tar.gz"
-    sha256 "..."
+    url "https://files.pythonhosted.org/packages/02/a3/16ca9a15e77c061a9250afbae2eae26f2e1579eb8ca9462ae2d2c71e1169/pyobjc_framework_cocoa-12.1.tar.gz"
+    sha256 "5556c87db95711b985d5efdaaf01c917ddd41d148b1e52a0c66b1a2e2c5c1640"
   end
 
   def install
