@@ -3,8 +3,8 @@ class DisplayLayoutManager < Formula
 
   desc "macOS用ディスプレイレイアウト自動設定ツール"
   homepage "https://github.com/eijikominami/display-layout-manager"
-  url "https://github.com/eijikominami/display-layout-manager/archive/v1.3.3.tar.gz"
-  sha256 "4313f876291e5260ea9b9234eebe7b1af5c88dc66625d7fb9d6643a66a214559"
+  url "https://github.com/eijikominami/display-layout-manager/archive/v1.4.0.tar.gz"
+  sha256 "a4c785b6444859408c00b97236cd780abcda50488c863f04489b610a1ec8ead6"
   license "MIT"
 
   depends_on "python@3.11"
@@ -28,7 +28,7 @@ class DisplayLayoutManager < Formula
 
   def install
     virtualenv_install_with_resources
-    
+
     # Manually create menubar entry point if it doesn't exist
     unless (bin/"display-layout-menubar").exist?
       (bin/"display-layout-menubar").write <<~EOS
@@ -47,23 +47,23 @@ class DisplayLayoutManager < Formula
     log_dir = "#{Dir.home}/Library/Logs/DisplayLayoutManager"
     system "mkdir", "-p", log_dir
     system "chmod", "700", log_dir
-    
+
     # セットアップ完了メッセージ
     puts <<~EOS
       Display Layout Manager がインストールされました。
-      
+
       CLI使用方法:
         display-layout-manager --save-current     # 現在のレイアウトを保存
         display-layout-manager                    # 保存されたレイアウトを適用
         display-layout-manager --show-displays   # 接続されたディスプレイを表示
-      
+
       メニューバーアプリ:
         display-layout-menubar            # メニューバーアプリを起動
         display-layout-menubar --enable-auto-launch  # 自動起動を有効化
-      
+
       設定ファイル:
         ~/Library/Application Support/DisplayLayoutManager/config.json
-      
+
       ログファイル:
         ~/Library/Logs/DisplayLayoutManager/
     EOS
